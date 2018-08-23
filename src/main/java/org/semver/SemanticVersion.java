@@ -112,7 +112,7 @@ public class SemanticVersion implements Comparable<SemanticVersion> {
     }
 
     public String toString() {
-        return major + nullable(".", minor) + nullable(".", patch) + nullable(".", minor) + nullable("-", preRelease) + nullable("+", buildMetadata);
+        return major + nullable(".", minor) + nullable(".", patch) + nullable("-", preRelease) + nullable("+", buildMetadata);
     }
 
     private String nullable(String prefix, Object s) {

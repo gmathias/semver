@@ -6,6 +6,20 @@ import org.junit.Test;
 public class SemanticVersionTest {
 
     @Test
+    public void test_toString() {
+        assertToString("1");
+        assertToString("1.2");
+        assertToString("1.2.3");
+        assertToString("1.2.3-alpha");
+        assertToString("1.2.3-beta");
+        assertToString("1.2.3-beta+build.789");
+    }
+
+    private void assertToString(String s) {
+        Assert.assertEquals(s, new SemanticVersion(s).toString());
+    }
+
+    @Test
     public void compare_MajorMinorPatch_optionalZeros() {
         assertEquals("1", "1.0");
         assertEquals("1", "1.0.0");
