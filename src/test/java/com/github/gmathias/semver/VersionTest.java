@@ -1,9 +1,9 @@
-package org.semver;
+package com.github.gmathias.semver;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SemanticVersionTest {
+public class VersionTest {
 
     @Test
     public void test_toString() {
@@ -16,7 +16,7 @@ public class SemanticVersionTest {
     }
 
     private void assertToString(String s) {
-        Assert.assertEquals(s, new SemanticVersion(s).toString());
+        Assert.assertEquals(s, new Version(s).toString());
     }
 
     @Test
@@ -68,19 +68,19 @@ public class SemanticVersionTest {
     }
 
     private void assertLesserThan(String v1, String v2) {
-        Assert.assertTrue("was expecting " + v1 + " < " + v2, new SemanticVersion(v1).compareTo(new SemanticVersion(v2)) < 0);
+        Assert.assertTrue("was expecting " + v1 + " < " + v2, new Version(v1).compareTo(new Version(v2)) < 0);
     }
 
     private void assertEquals(String v1, String v2) {
-        Assert.assertTrue("was expecting " + v1 + " == " + v2, 0 == new SemanticVersion(v1).compareTo(new SemanticVersion(v2)));
+        Assert.assertTrue("was expecting " + v1 + " == " + v2, 0 == new Version(v1).compareTo(new Version(v2)));
     }
 
     private void assertGreaterThan(String v1, String v2) {
-        Assert.assertTrue("was expecting " + v1 + " > " + v2, 0 < new SemanticVersion(v1).compareTo(new SemanticVersion(v2)));
+        Assert.assertTrue("was expecting " + v1 + " > " + v2, 0 < new Version(v1).compareTo(new Version(v2)));
     }
 
-    private SemanticVersion.PreRelease preRelease(String s) {
-        return s != null ? new SemanticVersion.PreRelease(s) : null;
+    private Version.PreRelease preRelease(String s) {
+        return s != null ? new Version.PreRelease(s) : null;
     }
 
     private void assertPreReleaseLesserThan(String v1, String v2) {

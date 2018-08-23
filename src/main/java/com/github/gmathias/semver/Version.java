@@ -1,4 +1,4 @@
-package org.semver;
+package com.github.gmathias.semver;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  * - "1.0+r24682"
  * - "1.0-beta+r24682"
  */
-public class SemanticVersion implements Comparable<SemanticVersion> {
+public class Version implements Comparable<Version> {
 
     // ex: 1.2.3-beta.2+build.456
     private static final Pattern PATTERN = Pattern.compile("(\\d+)(\\.(\\d+))?(\\.(\\d+))?(-(.+))?(\\+(.+))?");
@@ -38,7 +38,7 @@ public class SemanticVersion implements Comparable<SemanticVersion> {
 
     private String buildMetadata;
 
-    public SemanticVersion(String s) {
+    public Version(String s) {
         Matcher matcher = PATTERN.matcher(s);
         if (matcher.matches()) {
             major = groupInt(matcher, 1);
@@ -119,7 +119,7 @@ public class SemanticVersion implements Comparable<SemanticVersion> {
         return s != null ? prefix + s : "";
     }
 
-    public int compareTo(SemanticVersion v) {
+    public int compareTo(Version v) {
         int compare = compare(major, v.major);
         if (compare != 0) return compare;
         compare = compare(minor, v.minor);
